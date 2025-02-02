@@ -1,0 +1,67 @@
+{
+    "version": 1,
+    "author": "Gabriel vicente",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "board-pi-pico-w", "id": "pico", "top": -3.25, "left": 80.35, "attrs": {} },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": 44.4,
+        "left": -101.8,
+        "attrs": { "color": "blue" }
+      },
+      { "type": "wokwi-led", "id": "led2", "top": 102, "left": -101.8, "attrs": { "color": "red" } },
+      {
+        "type": "wokwi-led",
+        "id": "led3",
+        "top": 150,
+        "left": -101.8,
+        "attrs": { "color": "limegreen" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 80.75,
+        "left": -28.8,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r2",
+        "top": 138.35,
+        "left": -28.8,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r3",
+        "top": 167.15,
+        "left": -19.2,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-pushbutton",
+        "id": "btn1",
+        "top": -61,
+        "left": -57.6,
+        "attrs": { "color": "green" }
+      }
+    ],
+    "connections": [
+      [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+      [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+      [ "r1:2", "pico:GP11", "green", [ "v0", "h37.2", "v57.6" ] ],
+      [ "r1:1", "led1:A", "green", [ "v0" ] ],
+      [ "led2:C", "led1:C", "green", [ "v0", "h-18.8", "v-48", "h19.2" ] ],
+      [ "led3:C", "led2:C", "green", [ "v0", "h-18.8", "v-38.4", "h19.2" ] ],
+      [ "led2:A", "r2:1", "green", [ "v0" ] ],
+      [ "r2:2", "pico:GP12", "green", [ "v0" ] ],
+      [ "led3:A", "r3:1", "green", [ "v0", "h57.6" ] ],
+      [ "r3:2", "pico:GP13", "green", [ "v0" ] ],
+      [ "btn1:1.r", "pico:GND.1", "green", [ "v0", "h48.2", "v67.2" ] ],
+      [ "btn1:2.r", "pico:GP5", "green", [ "h19.4", "v96.2", "h9.6" ] ],
+      [ "led3:C", "pico:GND.4", "green", [ "v28.8", "h154", "v-48" ] ]
+    ],
+    "dependencies": {}
+  }
